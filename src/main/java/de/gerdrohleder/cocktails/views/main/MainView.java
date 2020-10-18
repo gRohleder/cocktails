@@ -24,6 +24,8 @@ import de.gerdrohleder.cocktails.views.main.MainView;
 import de.gerdrohleder.cocktails.views.cocktailiste.CocktailisteView;
 import de.gerdrohleder.cocktails.views.cocktail.CocktailView;
 import com.vaadin.flow.theme.lumo.Lumo;
+import de.gerdrohleder.cocktails.views.zutat.ZutatView;
+import de.gerdrohleder.cocktails.views.zutatliste.ZutatisteView;
 
 /**
  * The main view is a top-level placeholder for other views.
@@ -84,9 +86,11 @@ public class MainView extends AppLayout {
     }
 
     private Component[] createMenuItems() {
-        return new Tab[] {
-            createTab("Cocktailiste", CocktailisteView.class),
-            createTab("Cocktail", CocktailView.class)
+        return new Tab[]{
+                createTab("Cocktailiste", CocktailisteView.class),
+                createTab("Cocktail", CocktailView.class),
+                createTab("Zutat", ZutatView.class),
+                createTab("Zutatenliste", ZutatisteView.class)
         };
     }
 
