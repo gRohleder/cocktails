@@ -2,8 +2,8 @@ package de.gerdrohleder.cocktails.views.cocktailiste;
 
 import java.util.Optional;
 
-import de.gerdrohleder.cocktails.data.entity.Person;
-import de.gerdrohleder.cocktails.data.service.PersonService;
+import de.gerdrohleder.cocktails.data.entity.Cocktail;
+import de.gerdrohleder.cocktails.data.service.IngredientService;
 import com.vaadin.flow.component.AbstractField;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -33,7 +33,7 @@ import com.vaadin.flow.router.RouteAlias;
 @RouteAlias(value = "", layout = MainView.class)
 public class CocktailisteView extends Div {
 
-    private Grid<Person> grid;
+    private Grid<Cocktail> grid;
 
     private TextField firstName = new TextField();
     private TextField lastName = new TextField();
@@ -45,62 +45,62 @@ public class CocktailisteView extends Div {
     private Button cancel = new Button("Cancel");
     private Button save = new Button("Save");
 
-    private Binder<Person> binder;
+//    private Binder<Person> binder;
+//
+//    private Person person = new Person();
 
-    private Person person = new Person();
+    private IngredientService ingredientService;
 
-    private PersonService personService;
-
-    public CocktailisteView(@Autowired PersonService personService) {
+    public CocktailisteView(@Autowired IngredientService ingredientService) {
         setId("cocktailiste-view");
-        this.personService = personService;
+        this.ingredientService = ingredientService;
         // Configure Grid
-        grid = new Grid<>(Person.class);
-        grid.setColumns("firstName", "lastName", "email", "phone", "dateOfBirth", "occupation");
-        grid.setDataProvider(new CrudServiceDataProvider<Person, Void>(personService));
-        grid.addThemeVariants(GridVariant.LUMO_NO_BORDER);
-        grid.setHeightFull();
-
-        // when a row is selected or deselected, populate form
-        grid.asSingleSelect().addValueChangeListener(event -> {
-            if (event.getValue() != null) {
-                Optional<Person> personFromBackend = personService.get(event.getValue().getId());
-                // when a row is selected but the data is no longer available, refresh grid
-                if (personFromBackend.isPresent()) {
-                    populateForm(personFromBackend.get());
-                } else {
-                    refreshGrid();
-                }
-            } else {
-                clearForm();
-            }
-        });
-
-        // Configure Form
-        binder = new Binder<>(Person.class);
-
-        // Bind fields. This where you'd define e.g. validation rules
-        binder.bindInstanceFields(this);
-
-        cancel.addClickListener(e -> {
-            clearForm();
-            refreshGrid();
-        });
-
-        save.addClickListener(e -> {
-            try {
-                if (this.person == null) {
-                    this.person = new Person();
-                }
-                binder.writeBean(this.person);
-                personService.update(this.person);
-                clearForm();
-                refreshGrid();
-                Notification.show("Person details stored.");
-            } catch (ValidationException validationException) {
-                Notification.show("An exception happened while trying to store the person details.");
-            }
-        });
+//        grid = new Grid<>(Person.class);
+//        grid.setColumns("firstName", "lastName", "email", "phone", "dateOfBirth", "occupation");
+//        grid.setDataProvider(new CrudServiceDataProvider<Person, Void>(ingredientService));
+//        grid.addThemeVariants(GridVariant.LUMO_NO_BORDER);
+//        grid.setHeightFull();
+//
+//        // when a row is selected or deselected, populate form
+//        grid.asSingleSelect().addValueChangeListener(event -> {
+//            if (event.getValue() != null) {
+//                Optional<Person> personFromBackend = ingredientService.get(event.getValue().getId());
+//                // when a row is selected but the data is no longer available, refresh grid
+//                if (personFromBackend.isPresent()) {
+//                    populateForm(personFromBackend.get());
+//                } else {
+//                    refreshGrid();
+//                }
+//            } else {
+//                clearForm();
+//            }
+//        });
+//
+//        // Configure Form
+//        binder = new Binder<>(Person.class);
+//
+//        // Bind fields. This where you'd define e.g. validation rules
+//        binder.bindInstanceFields(this);
+//
+//        cancel.addClickListener(e -> {
+//            clearForm();
+//            refreshGrid();
+//        });
+//
+//        save.addClickListener(e -> {
+//            try {
+//                if (this.person == null) {
+//                    this.person = new Person();
+//                }
+//                binder.writeBean(this.person);
+//                ingredientService.update(this.person);
+//                clearForm();
+//                refreshGrid();
+//                Notification.show("Person details stored.");
+//            } catch (ValidationException validationException) {
+//                Notification.show("An exception happened while trying to store the person details.");
+//            }
+//        });
 
         SplitLayout splitLayout = new SplitLayout();
         splitLayout.setSizeFull();
@@ -161,12 +161,12 @@ public class CocktailisteView extends Div {
         grid.getDataProvider().refreshAll();
     }
 
-    private void clearForm() {
-        populateForm(null);
-    }
+//    private void clearForm() {
+//        populateForm(null);
+//    }
 
-    private void populateForm(Person value) {
-        this.person = value;
-        binder.readBean(this.person);
-    }
+//    private void populateForm(Person value) {
+//        this.person = value;
+//        binder.readBean(this.person);
+//    }
 }

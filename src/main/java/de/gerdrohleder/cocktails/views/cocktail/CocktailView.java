@@ -1,7 +1,7 @@
 package de.gerdrohleder.cocktails.views.cocktail;
 
-import de.gerdrohleder.cocktails.data.entity.Person;
-import de.gerdrohleder.cocktails.data.service.PersonService;
+import de.gerdrohleder.cocktails.data.entity.Cocktail;
+import de.gerdrohleder.cocktails.data.service.IngredientService;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -36,9 +36,9 @@ public class CocktailView extends Div {
     private Button cancel = new Button("Cancel");
     private Button save = new Button("Save");
 
-    private Binder<Person> binder = new Binder(Person.class);
+    private Binder<Cocktail> binder = new Binder(Cocktail.class);
 
-    public CocktailView(PersonService personService) {
+    public CocktailView(IngredientService ingredientService) {
         setId("cocktail-view");
 
         add(createTitle());
@@ -49,15 +49,15 @@ public class CocktailView extends Div {
         clearForm();
 
         cancel.addClickListener(e -> clearForm());
-        save.addClickListener(e -> {
-            personService.update(binder.getBean());
-            Notification.show("Person details stored.");
-            clearForm();
-        });
+//        save.addClickListener(e -> {
+//            ingredientService.update(binder.getBean());
+//            Notification.show("Person details stored.");
+//            clearForm();
+//        });
     }
 
     private void clearForm() {
-        binder.setBean(new Person());
+        binder.setBean(new Cocktail());
     }
 
     private Component createTitle() {

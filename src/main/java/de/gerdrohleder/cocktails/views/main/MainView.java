@@ -20,12 +20,11 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.server.PWA;
 import com.vaadin.flow.theme.Theme;
-import de.gerdrohleder.cocktails.views.main.MainView;
 import de.gerdrohleder.cocktails.views.cocktailiste.CocktailisteView;
 import de.gerdrohleder.cocktails.views.cocktail.CocktailView;
 import com.vaadin.flow.theme.lumo.Lumo;
-import de.gerdrohleder.cocktails.views.zutat.ZutatView;
-import de.gerdrohleder.cocktails.views.zutatliste.ZutatisteView;
+import de.gerdrohleder.cocktails.views.ingredient.IngredientView;
+import de.gerdrohleder.cocktails.views.ingredientslist.IngredientsListView;
 
 /**
  * The main view is a top-level placeholder for other views.
@@ -89,8 +88,8 @@ public class MainView extends AppLayout {
         return new Tab[]{
                 createTab("Cocktailiste", CocktailisteView.class),
                 createTab("Cocktail", CocktailView.class),
-                createTab("Zutat", ZutatView.class),
-                createTab("Zutatenliste", ZutatisteView.class)
+                createTab("Zutat", IngredientView.class),
+                createTab("Zutatenliste", IngredientsListView.class)
         };
     }
 
