@@ -14,5 +14,5 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Ingredient extends AbstractEntity {
-    private String name;
+    private String zname;
 }

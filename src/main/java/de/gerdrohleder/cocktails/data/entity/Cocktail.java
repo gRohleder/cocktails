@@ -11,7 +11,8 @@ import java.util.List;
 @Entity
 @Data
 public class Cocktail extends AbstractEntity {
-    @ManyToMany(targetEntity = Assembly.class)
-    @JoinTable(name="Cocktail_Assembly")
-    private List<Assembly> assemblies;
+//    @ManyToMany(targetEntity = Assembly.class)
+//    @JoinTable(name="Cocktail_Assembly")
+//    private List<Assembly> assemblies;
+    private String name;
 }

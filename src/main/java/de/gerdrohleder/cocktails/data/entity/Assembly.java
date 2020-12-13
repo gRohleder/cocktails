@@ -9,6 +9,6 @@ import javax.persistence.Entity;
 @Data
 public class Assembly extends AbstractEntity {
     private int amount;
-    private Unit unit;
-    private Ingredient ingredient;
+//    private Unit unit;
+//    private Ingredient ingredient;
 }

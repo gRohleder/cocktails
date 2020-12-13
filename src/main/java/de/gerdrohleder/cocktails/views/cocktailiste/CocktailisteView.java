@@ -33,7 +33,7 @@ import com.vaadin.flow.router.RouteAlias;
 @RouteAlias(value = "", layout = MainView.class)
 public class CocktailisteView extends Div {
 
-    private Grid<Cocktail> grid;
+    private Grid<Cocktail> grid = new Grid<>(Cocktail.class);
 
     private TextField firstName = new TextField();
     private TextField lastName = new TextField();
@@ -52,9 +52,9 @@ public class CocktailisteView extends Div {
     private IngredientService ingredientService;
 
     public CocktailisteView(@Autowired IngredientService ingredientService) {
-        setId("cocktailiste-view");
-        this.ingredientService = ingredientService;
-        // Configure Grid
+//        setId("cocktailiste-view");
+//        this.ingredientService = ingredientService;
+//        // Configure Grid
 //        grid = new Grid<>(Person.class);
 //        grid.setColumns("firstName", "lastName", "email", "phone", "dateOfBirth", "occupation");
 //        grid.setDataProvider(new CrudServiceDataProvider<Person, Void>(ingredientService));
@@ -101,14 +101,14 @@ public class CocktailisteView extends Div {
 //                Notification.show("An exception happened while trying to store the person details.");
 //            }
 //        });
-
-        SplitLayout splitLayout = new SplitLayout();
-        splitLayout.setSizeFull();
-
-        createGridLayout(splitLayout);
-        createEditorLayout(splitLayout);
-
-        add(splitLayout);
+//
+//        SplitLayout splitLayout = new SplitLayout();
+//        splitLayout.setSizeFull();
+//
+//        createGridLayout(splitLayout);
+//        createEditorLayout(splitLayout);
+//
+//        add(splitLayout);
     }
 
     private void createEditorLayout(SplitLayout splitLayout) {
